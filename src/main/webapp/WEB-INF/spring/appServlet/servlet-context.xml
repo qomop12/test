@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- @Controller 어노테이션이 선언된 빈을 활성화하지만 빈을 검색하거나 매핑 할 수 없다. -->
+	<annotation-driven />
+
+	<!-- DispatcherServlet 클래스가 통제하는 서블릿이 아닌 파일들에 대한 실행을 담당한다. -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/css/**" location="/resources/css/" />
+	<resources mapping="/img/**" location="/resources/img/" />
+	<resources mapping="/js/**" location="/resources/js/" />
+
+	<!-- 뷰 설정에 대한 등록을 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- 뷰의 접근 경로를 설정 -->
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+	<!-- 뷰의 실행 확장자를 설정하며 설정된 확장자는 명시하지 않아도 된다. -->
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="spring.project.interpark" />
+	<!-- 이후에 인터셉터 설정 -->
+	<!-- 이후에 파일업로드 설정 -->
+	
+	
+</beans:beans>
